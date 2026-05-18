@@ -1,0 +1,35 @@
+EMBER: When the Continent Burns
+FIT2179 Data Visualisation 2 — Moodle Submission Blurb
+Word count: ~490
+
+---
+
+DOMAIN, WHY, AND WHO
+
+Australia burns. Millions of hectares of bushland burn, the land is altered, and communities are evacuated during bushfires each summer. Most people follow the news cycle: a terrible fire season makes the news and then disappears. The gradual increase in burnt area over decades remains largely hidden.
+
+This visualisation shows bushfire activity in Australia from 1950 to 2024, highlighting changes in size, timing, and location over the past 70 years. The target audience is the average Australian adult, someone who has been affected by a fire season, watched footage on television, or read about it in the news, but has never seen the complete national picture presented as data. The aim is to make that picture readable and to link the statistics to familiar places and times.
+
+
+WHAT: DATA SOURCES AND PREPARATION
+
+The visualisation draws on two main datasets.
+
+The first is the Historical Bushfire Boundaries dataset (version 2) published by Geoscience Australia, accessed through the ArcGIS REST Feature Service. It contains individual fire perimeters with attributes including state, year, season, burnt area in hectares, and ignition cause. The data covers all Australian states and territories from 1950 to 2024.
+
+The second is monthly rainfall data from the Bureau of Meteorology Climate Data Online service, used to build the climate comparison in the connected scatter plot and to relate fire intensity to seasonal rainfall patterns.
+
+Raw data was processed using a Python pipeline built with pandas. Key steps included converting hectares to square kilometres, aggregating records by year, state, decade, and month, classifying ignition causes into three categories (Lightning, Human, Unknown), and identifying the ten largest individual fires by burnt area. The result was fourteen clean CSV files totalling under 100 KB, well within the data size limit.
+
+
+HOW: IDIOM RATIONALE AND SPECIAL FEATURES
+
+Eleven Vega-Lite visualisations are embedded across the page.
+
+A choropleth map provides immediate geographic context by showing total burnt area per state. A time series traces annual burnt area from 1950 to 2024, revealing an upward trend in the 2000s. A radial bar chart uses its circular form to highlight the concentration of fire activity between October and January.
+
+A donut chart and stacked area chart break down ignition causes over time. A scatter plot with regression compares temperature anomaly against annual burnt area. Small multiples display each state's decade-by-decade trends with independent y-scales, preventing larger states from visually overwhelming smaller ones.
+
+A bivariate choropleth encodes both fire frequency and temperature into a 3x3 colour matrix, showing compound risk at a glance. A bar chart lists the ten largest fires on record. A calendar heatmap shows the day-of-year distribution of peak fire events. A connected scatter plot links drought years to large fire seasons, tracing the relationship through time.
+
+Interactive tooltips on all charts let readers explore individual values. The KPI bar presents four key numbers drawn from the data. The bivariate legend is a custom HTML component that provides layout control not available through standard Vega-Lite legend options.
