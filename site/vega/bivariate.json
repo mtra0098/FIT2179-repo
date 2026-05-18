@@ -1,0 +1,40 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Bivariate choropleth: fire frequency × summer-temp anomaly.",
+  "width": "container",
+  "height": 520,
+  "background": null,
+  "projection": { "type": "albers", "rotate": [-132, 0, 0], "center": [0, -27], "parallels": [-18, -36] },
+  "data": {
+    "url": "data/au_states.json",
+    "format": { "type": "json", "property": "features" }
+  },
+  "transform": [
+    {
+      "lookup": "properties.STATE_NAME",
+      "from": {
+        "data": { "url": "data/state_bivariate.csv" },
+        "key": "state",
+        "fields": ["freq_bin", "temp_bin", "bin", "n_fires", "temp_anom_djf"]
+      }
+    }
+  ],
+  "mark": { "type": "geoshape", "stroke": "#FAF6EF", "strokeWidth": 1.2 },
+  "encoding": {
+    "color": {
+      "field": "bin",
+      "type": "nominal",
+      "scale": {
+        "domain": ["1-1","1-2","1-3","2-1","2-2","2-3","3-1","3-2","3-3"],
+        "range":  ["#E4E0CB","#E5C9A6","#E5A883","#B5BFA1","#C49E7C","#C57250","#82A085","#A06B4E","#B23A1A"]
+      },
+      "legend": null
+    },
+    "tooltip": [
+      { "field": "properties.STATE_NAME", "type": "nominal", "title": "State" },
+      { "field": "freq_bin", "type": "nominal", "title": "Fire frequency" },
+      { "field": "temp_bin", "type": "nominal", "title": "Temp band" },
+      { "field": "temp_anom_djf", "type": "quantitative", "title": "DJF anomaly (°C)", "format": ".2f" }
+    ]
+  }
+}

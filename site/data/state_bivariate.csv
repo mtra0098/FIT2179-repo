@@ -1,0 +1,8 @@
+state,freq_bin,temp_bin,bin,n_fires,temp_anom_djf
+Western Australia,high,cool,3-1,82981,0.498
+Queensland,low,cool,1-1,0,0.7631999999999999
+South Australia,low,hot,1-3,3480,1.0224000000000002
+Victoria,high,med,3-2,65207,0.9536
+New South Wales,med,hot,2-3,13219,1.1344
+Tasmania,med,cool,2-1,7090,0.6344
+Australian Capital Territory,low,med,1-2,354,

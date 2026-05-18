@@ -1,0 +1,30 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Donut chart of fire causes (excluding null/Unknown).",
+  "width": "container",
+  "height": 280,
+  "background": null,
+  "data": { "url": "data/fires_cause.csv" },
+  "transform": [
+    { "filter": "datum.cause !== 'Unknown'" }
+  ],
+  "layer": [
+    {
+      "mark": { "type": "arc", "innerRadius": 70, "outerRadius": 120, "stroke": "#FAF6EF", "strokeWidth": 1.5 },
+      "encoding": {
+        "theta": { "field": "count", "type": "quantitative", "stack": true },
+        "color": {
+          "field": "cause",
+          "type": "nominal",
+          "scale": { "domain": ["Lightning", "Human", "Prescribed"], "range": ["#B23A1A", "#2B2B2B", "#4A7A4A"] },
+          "legend": null
+        },
+        "tooltip": [
+          { "field": "cause", "type": "nominal" },
+          { "field": "count", "type": "quantitative", "format": "," }
+        ]
+      }
+    }
+  ],
+  "view": { "stroke": null }
+}

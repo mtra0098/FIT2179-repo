@@ -1,0 +1,24 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Radial bar by month, burnt area.",
+  "width": "container",
+  "height": 280,
+  "background": null,
+  "data": { "url": "data/fires_month.csv" },
+  "layer": [
+    {
+      "mark": { "type": "arc", "innerRadius": 40, "stroke": "#FAF6EF", "strokeWidth": 1 },
+      "encoding": {
+        "theta": { "field": "month_num", "type": "quantitative", "scale": { "type": "linear", "domain": [0.5, 12.5] } },
+        "radius": { "field": "burnt_area_km2", "type": "quantitative", "scale": { "type": "sqrt", "zero": true, "rangeMin": 40 } },
+        "color": { "field": "burnt_area_km2", "type": "quantitative", "scale": { "scheme": "oranges" }, "legend": null },
+        "tooltip": [
+          { "field": "month", "type": "nominal", "title": "Month" },
+          { "field": "burnt_area_km2", "type": "quantitative", "format": ",", "title": "Burnt area (km²)" },
+          { "field": "n_fires", "type": "quantitative", "format": ",", "title": "Fires" }
+        ]
+      }
+    }
+  ],
+  "view": { "stroke": null }
+}

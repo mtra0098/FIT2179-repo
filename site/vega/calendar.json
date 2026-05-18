@@ -1,0 +1,33 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Daily fire-count heatmap, Black Summer 2019–20.",
+  "width": "container",
+  "height": 220,
+  "background": null,
+  "data": { "url": "data/calendar_blacksummer.csv" },
+  "mark": { "type": "rect", "stroke": "#FAF6EF", "strokeWidth": 0.6 },
+  "encoding": {
+    "x": {
+      "field": "week",
+      "type": "ordinal",
+      "axis": { "title": null, "labels": false, "ticks": false, "domain": false }
+    },
+    "y": {
+      "field": "weekday",
+      "type": "ordinal",
+      "sort": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      "axis": { "title": null, "labelFontSize": 10, "labelFont": "JetBrains Mono", "domain": false, "ticks": false }
+    },
+    "color": {
+      "field": "count",
+      "type": "quantitative",
+      "scale": { "type": "sqrt", "scheme": "oranges", "domainMin": 0 },
+      "legend": { "title": "Fires recorded", "orient": "bottom", "direction": "horizontal", "format": ",.0f" }
+    },
+    "tooltip": [
+      { "field": "date", "type": "temporal", "title": "Date", "format": "%a %e %b %Y" },
+      { "field": "count", "type": "quantitative", "format": ",", "title": "Fires" },
+      { "field": "burnt_area_km2", "type": "quantitative", "title": "Burnt (km²)", "format": ",.1f" }
+    ]
+  }
+}

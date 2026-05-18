@@ -1,0 +1,45 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Connected scatter: annual rainfall deficit vs burnt area, 1990–2024.",
+  "width": "container",
+  "height": 460,
+  "background": null,
+  "data": { "url": "data/rain_fires.csv" },
+  "layer": [
+    {
+      "mark": { "type": "line", "color": "#8C8C8C", "opacity": 0.5, "strokeWidth": 1, "interpolate": "monotone" },
+      "encoding": {
+        "x": { "field": "rain_deficit_mm", "type": "quantitative", "scale": { "reverse": true }, "axis": { "title": "Rainfall vs 1961–90 mean (mm)" } },
+        "y": { "field": "burnt_area_km2", "type": "quantitative", "scale": { "type": "log" }, "axis": { "title": "Burnt area (km², log)", "format": ",.0f" } },
+        "order": { "field": "year", "type": "ordinal" }
+      }
+    },
+    {
+      "mark": { "type": "circle", "size": 110, "stroke": "#B23A1A", "strokeWidth": 0.5 },
+      "encoding": {
+        "x": { "field": "rain_deficit_mm", "type": "quantitative", "scale": { "reverse": true } },
+        "y": { "field": "burnt_area_km2", "type": "quantitative", "scale": { "type": "log" } },
+        "color": {
+          "field": "decade",
+          "type": "ordinal",
+          "scale": { "domain": [1990, 2000, 2010, 2020], "range": ["#F2C29A", "#E8884C", "#B23A1A", "#7A2410"] },
+          "legend": { "title": "Decade", "orient": "right" }
+        },
+        "tooltip": [
+          { "field": "year", "type": "ordinal" },
+          { "field": "rain_deficit_mm", "type": "quantitative", "title": "Rain deficit (mm)", "format": ".1f" },
+          { "field": "burnt_area_km2", "type": "quantitative", "title": "Burnt km²", "format": "," }
+        ]
+      }
+    },
+    {
+      "transform": [{ "filter": "datum.year == 1994 || datum.year == 2002 || datum.year == 2019 || datum.year == 2012" }],
+      "mark": { "type": "text", "align": "left", "dx": 8, "dy": -6, "fontSize": 10, "fontFamily": "JetBrains Mono", "color": "#2B2B2B" },
+      "encoding": {
+        "x": { "field": "rain_deficit_mm", "type": "quantitative", "scale": { "reverse": true } },
+        "y": { "field": "burnt_area_km2", "type": "quantitative", "scale": { "type": "log" } },
+        "text": { "field": "year", "type": "ordinal" }
+      }
+    }
+  ]
+}

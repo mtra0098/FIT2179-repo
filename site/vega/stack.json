@@ -1,0 +1,27 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Stacked area of fire causes over time (lightning + human + prescribed, share).",
+  "width": "container",
+  "height": 280,
+  "background": null,
+  "data": { "url": "data/cause_yearly.csv" },
+  "transform": [
+    { "filter": "datum.cause !== 'Unknown'" }
+  ],
+  "mark": { "type": "area", "interpolate": "monotone" },
+  "encoding": {
+    "x": { "field": "year", "type": "quantitative", "axis": { "title": null, "format": "d", "tickCount": 6 } },
+    "y": { "aggregate": "sum", "field": "count", "type": "quantitative", "stack": "normalize", "axis": { "title": "Share", "format": "%" } },
+    "color": {
+      "field": "cause",
+      "type": "nominal",
+      "scale": { "domain": ["Lightning", "Human", "Prescribed"], "range": ["#B23A1A", "#2B2B2B", "#4A7A4A"] },
+      "legend": null
+    },
+    "tooltip": [
+      { "field": "year", "type": "ordinal" },
+      { "field": "cause", "type": "nominal" },
+      { "field": "count", "type": "quantitative", "format": "," }
+    ]
+  }
+}

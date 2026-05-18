@@ -1,0 +1,62 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Annual burnt area Australia 1950-2024.",
+  "width": "container",
+  "height": 380,
+  "background": null,
+  "data": { "url": "data/fires_annual.csv" },
+  "layer": [
+    {
+      "mark": { "type": "area", "color": "#B23A1A", "opacity": 0.15, "interpolate": "monotone" },
+      "encoding": {
+        "x": { "field": "year", "type": "quantitative", "axis": { "title": null, "format": "d", "tickCount": 8 }, "scale": { "domain": [1950, 2024] } },
+        "y": { "field": "burnt_area_km2", "type": "quantitative", "axis": { "title": "Burnt area (km²)", "format": ",.0f" } }
+      }
+    },
+    {
+      "mark": { "type": "line", "color": "#B23A1A", "strokeWidth": 1.8, "interpolate": "monotone" },
+      "encoding": {
+        "x": { "field": "year", "type": "quantitative" },
+        "y": { "field": "burnt_area_km2", "type": "quantitative" }
+      }
+    },
+    {
+      "mark": { "type": "circle", "size": 60, "color": "#B23A1A", "stroke": "#FAF6EF", "strokeWidth": 1.5 },
+      "encoding": {
+        "x": { "field": "year", "type": "quantitative" },
+        "y": { "field": "burnt_area_km2", "type": "quantitative" },
+        "tooltip": [
+          { "field": "year", "type": "ordinal", "title": "Year" },
+          { "field": "burnt_area_km2", "type": "quantitative", "format": ",", "title": "Burnt area (km²)" },
+          { "field": "n_fires", "type": "quantitative", "format": ",", "title": "Fires" }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          { "year": 1983, "label": "Ash Wednesday" },
+          { "year": 2009, "label": "Black Saturday" },
+          { "year": 2019, "label": "Black Summer" }
+        ]
+      },
+      "mark": { "type": "rule", "stroke": "#8C8C8C", "strokeDash": [3, 3] },
+      "encoding": { "x": { "field": "year", "type": "quantitative" } }
+    },
+    {
+      "data": {
+        "values": [
+          { "year": 1983, "label": "Ash Wednesday 1983" },
+          { "year": 2009, "label": "Black Saturday 2009" },
+          { "year": 2019, "label": "Black Summer 2019–20" }
+        ]
+      },
+      "mark": { "type": "text", "align": "left", "dx": 4, "dy": -8, "color": "#2B2B2B", "fontSize": 11, "fontWeight": 500, "fontStyle": "italic" },
+      "encoding": {
+        "x": { "field": "year", "type": "quantitative" },
+        "y": { "value": 8 },
+        "text": { "field": "label", "type": "nominal" }
+      }
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Top 10 largest single bushfire polygons on record.",
+  "width": "container",
+  "height": 440,
+  "background": null,
+  "data": { "url": "data/top10_fires.csv" },
+  "layer": [
+    {
+      "mark": { "type": "bar", "color": "#B23A1A", "height": 22 },
+      "encoding": {
+        "y": {
+          "field": "name",
+          "type": "nominal",
+          "sort": "-x",
+          "axis": { "title": null, "labelLimit": 240, "labelFontSize": 12, "labelFont": "Inter", "labelPadding": 8 }
+        },
+        "x": {
+          "field": "burnt_area_km2",
+          "type": "quantitative",
+          "axis": { "title": "Burnt area (km²)", "format": ",.0f" }
+        },
+        "tooltip": [
+          { "field": "name", "type": "nominal", "title": "Fire" },
+          { "field": "state", "type": "nominal" },
+          { "field": "year", "type": "ordinal" },
+          { "field": "burnt_area_km2", "type": "quantitative", "format": "," },
+          { "field": "ignition_cause", "type": "nominal", "title": "Cause" }
+        ]
+      }
+    },
+    {
+      "mark": { "type": "text", "align": "left", "dx": 6, "fontSize": 10, "fontFamily": "JetBrains Mono", "color": "#8C8C8C" },
+      "encoding": {
+        "y": { "field": "name", "type": "nominal", "sort": "-x" },
+        "x": { "field": "burnt_area_km2", "type": "quantitative" },
+        "text": { "field": "year", "type": "ordinal" }
+      }
+    }
+  ]
+}

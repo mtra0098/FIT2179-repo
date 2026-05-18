@@ -1,0 +1,39 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "DJF summer temp anomaly vs annual fires.",
+  "width": "container",
+  "height": 280,
+  "background": null,
+  "data": { "url": "data/temp_vs_fires.csv" },
+  "layer": [
+    {
+      "mark": { "type": "line", "color": "#8C8C8C", "strokeDash": [4, 4], "strokeWidth": 1 },
+      "transform": [{ "regression": "fires", "on": "temp_anom_djf" }],
+      "encoding": {
+        "x": { "field": "temp_anom_djf", "type": "quantitative" },
+        "y": { "field": "fires", "type": "quantitative" }
+      }
+    },
+    {
+      "mark": { "type": "circle", "size": 80, "color": "#B23A1A", "opacity": 0.85, "stroke": "#FAF6EF", "strokeWidth": 1 },
+      "encoding": {
+        "x": { "field": "temp_anom_djf", "type": "quantitative", "scale": { "zero": false, "nice": true }, "axis": { "title": "DJF summer temp anomaly (°C)" } },
+        "y": { "field": "fires", "type": "quantitative", "axis": { "title": "Annual fires", "format": ",.0f" } },
+        "tooltip": [
+          { "field": "year", "type": "ordinal" },
+          { "field": "temp_anom_djf", "type": "quantitative", "title": "Anomaly (°C)", "format": ".2f" },
+          { "field": "fires", "type": "quantitative", "title": "Fires", "format": "," }
+        ]
+      }
+    },
+    {
+      "transform": [{ "filter": "datum.year == 2019" }],
+      "mark": { "type": "text", "dx": -8, "dy": -10, "align": "right", "fontSize": 10, "fontFamily": "JetBrains Mono", "color": "#2B2B2B" },
+      "encoding": {
+        "x": { "field": "temp_anom_djf", "type": "quantitative" },
+        "y": { "field": "fires", "type": "quantitative" },
+        "text": { "value": "BLACK SUMMER 2019" }
+      }
+    }
+  ]
+}

@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=1240" />
+<title>When the Continent Burns. Seventy years of fire across Australia</title>
+<meta name="description" content="A data essay on bushfires in Australia, 1950 to 2024." />
+<meta name="author" content="mtra0098" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+<script src="https://cdn.jsdelivr.net/npm/vega@5.30.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@5.21.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6.26.0"></script>
+</head>
+<body>
+
+<!-- =================== NAV =================== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand" aria-label="EMBER home">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <circle cx="16" cy="16" r="15" fill="none" stroke="#2B2B2B" stroke-width="1"/>
+        <path d="M16 7 C 12 12, 11 15, 13 18 C 11 19, 10.5 21, 12 23 C 13 24.4, 15 25, 16 25 C 17 25, 19 24.4, 20 23 C 21.5 21, 21 19, 19 18 C 21 15, 20 12, 16 7 Z"
+              fill="none" stroke="#B23A1A" stroke-width="1.4" stroke-linejoin="round"/>
+      </svg>
+      <span class="brand-word">EMBER</span>
+    </a>
+    <div class="nav-links">
+      <a href="#map">Map</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#causes">Causes</a>
+      <a href="#black-summer">Black Summer</a>
+      <a href="#sources">Sources</a>
+    </div>
+  </div>
+</nav>
+
+<!-- =================== HERO =================== -->
+<header class="wrap hero" id="top">
+  <div class="hero-grid">
+    <div>
+      <div class="eyebrow" style="margin-bottom:18px">Bushfires in Australia · 1950 to 2024</div>
+      <h1>When the <em>Continent</em><br/>Burns.</h1>
+      <p class="sub">Seventy years of Australian bushfire, in maps and charts.</p>
+      <div class="byline">
+        <span><svg class="small-flame" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 7 C 12 12, 11 15, 13 18 C 11 19, 10.5 21, 12 23 C 13 24.4, 15 25, 16 25 C 17 25, 19 24.4, 20 23 C 21.5 21, 21 19, 19 18 C 21 15, 20 12, 16 7 Z" fill="none" stroke="#B23A1A" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+        <span class="author">mtra0098</span>
+        <span class="dot"></span>
+        <span class="mono">2026-05-29</span>
+        <span class="dot"></span>
+        <span>8 min read</span>
+        <span class="dot"></span>
+        <span class="eyebrow" style="margin:0">FIT2179 · Monash</span>
+      </div>
+      <p class="hook">Every summer the country burns somewhere. This is what the public data shows about where, when, and why.</p>
+    </div>
+    <div class="hero-spark" aria-hidden="true">
+      <div class="smoke"></div>
+      <svg viewBox="0 0 320 320" width="380" height="380" style="position:relative">
+        <defs>
+          <radialGradient id="emberGrad" cx="50%" cy="60%" r="50%">
+            <stop offset="0%" stop-color="#E8884C" stop-opacity="0.45"/>
+            <stop offset="55%" stop-color="#B23A1A" stop-opacity="0.10"/>
+            <stop offset="100%" stop-color="#B23A1A" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="emberCore" cx="50%" cy="65%" r="35%">
+            <stop offset="0%" stop-color="#F2C29A" stop-opacity="0.8"/>
+            <stop offset="100%" stop-color="#B23A1A" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <circle cx="160" cy="170" r="150" fill="url(#emberGrad)"/>
+        <circle cx="160" cy="180" r="80" fill="url(#emberCore)"/>
+        <circle cx="160" cy="160" r="148" fill="none" stroke="#2B2B2B" stroke-width="0.75" opacity="0.35"/>
+        <circle cx="160" cy="160" r="120" fill="none" stroke="#2B2B2B" stroke-width="0.5" opacity="0.18"/>
+        <circle cx="160" cy="160" r="88" fill="none" stroke="#2B2B2B" stroke-width="0.4" opacity="0.12"/>
+        <path d="M160 30 C 120 80, 105 115, 130 155 C 105 170, 100 195, 120 220 C 135 240, 152 250, 160 250 C 168 250, 185 240, 200 220 C 220 195, 215 170, 190 155 C 215 115, 200 80, 160 30 Z"
+              fill="none" stroke="#B23A1A" stroke-width="1.8" stroke-linejoin="round"/>
+        <path d="M160 75 C 140 105, 132 130, 148 152 C 132 162, 130 180, 142 198 C 152 212, 158 218, 160 218 C 162 218, 168 212, 178 198 C 190 180, 188 162, 172 152 C 188 130, 180 105, 160 75 Z"
+              fill="none" stroke="#B23A1A" stroke-width="1.2" stroke-linejoin="round" opacity="0.6"/>
+        <path d="M160 120 C 150 138, 146 152, 154 165 C 146 170, 145 180, 152 190 C 156 197, 158 200, 160 200 C 162 200, 164 197, 168 190 C 175 180, 174 170, 166 165 C 174 152, 170 138, 160 120 Z"
+              fill="#B23A1A" opacity="0.9"/>
+        <g stroke="#2B2B2B" stroke-width="0.5" opacity="0.5">
+          <line x1="160" y1="10" x2="160" y2="22"/>
+          <line x1="160" y1="298" x2="160" y2="310"/>
+          <line x1="10" y1="160" x2="22" y2="160"/>
+          <line x1="298" y1="160" x2="310" y2="160"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</header>
+<div class="wrap"><div class="hr"></div></div>
+
+<!-- =================== INTRO + KPI =================== -->
+<section class="wrap intro">
+  <div class="intro-text">
+    <p>Bushfire is older than Australia itself. The eucalypts need it. A lot of native seeds will not open without it. People have been managing it on this continent for sixty thousand years.</p>
+    <p>Between 1950 and 2024 the agencies recorded enough bushfire to cover an area bigger than France. Most of it was up north and out west, in the savannas of the Top End and the spinifex of the Pilbara, where fire is just part of the year. The southeast is different. Fires there are rarer, but they are hotter and faster, and they tend to hit where most of us live.</p>
+    <p>The charts below come from three places: the Bureau of Meteorology, Geoscience Australia, and Digital Earth Australia. Scroll through and have a look. The thing to keep in mind is whether the fire season we used to plan around is still the fire season we are getting.</p>
+  </div>
+  <div class="kpis">
+    <div class="kpi">
+      <div class="label">Total area burnt · 1950 to 2024</div>
+      <div class="v" data-kpi="area"><span>0</span><small>km²</small></div>
+      <div class="desc">All recorded bushfires added up. About the size of France.</div>
+      <svg class="spark" viewBox="0 0 240 24" preserveAspectRatio="none">
+        <polyline fill="none" stroke="#B23A1A" stroke-width="1.4"
+                  points="0,18 12,17 24,16 36,15 48,14 60,13 72,12 84,12 96,11 108,10 120,9 132,9 144,8 156,7 168,6 180,5 192,4 204,3 216,2 228,2 240,1"/>
+        <line x1="0" y1="22" x2="240" y2="22" stroke="#D9D2C2" stroke-width="0.5"/>
+      </svg>
+    </div>
+    <div class="kpi">
+      <div class="label">Recorded bushfires</div>
+      <div class="v" data-kpi="count"><span>0</span></div>
+      <div class="desc">Separate fire events logged by state and federal agencies since 1950.</div>
+      <svg class="spark" viewBox="0 0 240 24" preserveAspectRatio="none">
+        <polyline fill="none" stroke="#B23A1A" stroke-width="1.4"
+                  points="0,20 10,19 20,17 30,18 40,16 50,15 60,14 70,12 80,15 90,11 100,13 110,10 120,12 130,9 140,11 150,8 160,7 170,9 180,6 190,5 200,7 210,4 220,3 230,5 240,2"/>
+      </svg>
+    </div>
+    <div class="kpi">
+      <div class="label">Homes destroyed · Black Summer</div>
+      <div class="v" data-kpi="homes"><span>0</span></div>
+      <div class="desc">Houses lost over the 2019 to 2020 fire season. 33 people died.</div>
+      <svg class="spark" viewBox="0 0 240 24" preserveAspectRatio="none">
+        <polyline fill="none" stroke="#B23A1A" stroke-width="1.4"
+                  points="0,22 30,21 60,20 90,20 120,19 150,18 180,16 200,12 215,4 230,18 240,21"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- =================== CHOROPLETH MAP =================== -->
+<section class="wrap band" id="map">
+  <div class="sec-head">
+    <span class="sec-tag">§ 03 · Geography of fire</span>
+    <h2>Where Australia burns</h2>
+    <p class="sub">Cumulative bushfire footprint by state and territory since 2000, in square kilometres. Rangeland fires in the north and west dominate the total. The southeast carries the heavier human cost.</p>
+  </div>
+
+  <div class="map-grid">
+    <div class="map-card">
+      <div id="vis-choropleth" class="vega-chart" style="min-height:520px"></div>
+
+      <div class="ann-card" style="right:24px; top:80px; width:170px">
+        <div class="ann-title">Black Summer</div>
+        <div class="ann-meta">NSW · 2019 to 2020</div>
+        <div style="font-size:11px;color:#5a5a55;margin-top:4px">5.5 million hectares burnt in NSW. 26 people died.</div>
+      </div>
+      <div class="ann-card" style="right:18px; bottom:80px; width:170px">
+        <div class="ann-title">Black Saturday</div>
+        <div class="ann-meta">VIC · 7 Feb 2009</div>
+        <div style="font-size:11px;color:#5a5a55;margin-top:4px">173 people died in a single afternoon.</div>
+      </div>
+      <div class="ann-card" style="left:24px; top:60px; width:170px">
+        <div class="ann-title">2003 Alpine fires</div>
+        <div class="ann-meta">VIC · NSW · ACT</div>
+        <div style="font-size:11px;color:#5a5a55;margin-top:4px">1.9 million hectares of high country burnt over 59 days.</div>
+      </div>
+    </div>
+
+    <aside class="rank">
+      <h4>Top 5 states</h4>
+      <div class="rsub">By cumulative km² since 2000</div>
+      <div id="state-rank-list"></div>
+      <div style="margin-top:18px;font-size:11px;color:#8C8C8C;line-height:1.55">
+        WA and the NT together cover <b style="color:#B23A1A;font-family:Playfair Display">59%</b> of all area burnt. Almost all of it is savanna and spinifex country, hardly anyone lives there.
+      </div>
+    </aside>
+  </div>
+  <p class="caption" style="margin-top:18px">Source: Geoscience Australia Historical Bushfire Boundaries v2 (2024). NT is not in the dataset. The cumulative area also counts ground that burnt more than once, so treat the numbers as a ranking rather than a true land area. Map uses an Albers equal-area projection.</p>
+</section>
+
+<!-- =================== TIME SERIES =================== -->
+<section class="wrap band" id="timeline">
+  <div class="sec-head">
+    <span class="sec-tag">§ 04 · When</span>
+    <h2 class="h-28">Seventy fire seasons</h2>
+    <p class="sub">Area burnt each year, 1950 to 2024. Three seasons stick out: Ash Wednesday, Black Saturday, and Black Summer.</p>
+  </div>
+
+  <div class="ts-card">
+    <div id="vis-timeseries" class="vega-chart" style="min-height:420px"></div>
+  </div>
+
+  <p class="caption" style="margin-top:14px">Annual burnt area, Australia-wide. Source: Geoscience Australia HBB v2, grouped by ignition year. Numbers before 1990 are pieced together from older state archives, so treat them as rough.</p>
+</section>
+
+<!-- =================== 2x2 GRID =================== -->
+<section class="wrap band" id="causes">
+  <div style="display:flex;align-items:end;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:24px">
+    <div class="sec-head" style="margin-bottom:0">
+      <span class="sec-tag">§ 05 · Why</span>
+      <h2 class="h-28">When and why fires start</h2>
+      <p class="sub">Four ways of slicing the same record: by month, by cause, by cause over time, and against summer temperature.</p>
+    </div>
+    <div class="grid-legend">
+      <span class="swatch"><i style="background:#B23A1A"></i> Lightning</span>
+      <span class="swatch"><i style="background:#2B2B2B"></i> Human</span>
+      <span class="swatch"><i style="background:#4A7A4A"></i> Prescribed</span>
+      <span class="swatch"><i style="background:#B4B0A6"></i> Unknown</span>
+    </div>
+  </div>
+
+  <div class="grid-2x2">
+    <div class="card">
+      <div class="ctitle">A. The fire calendar</div>
+      <div class="csub">Burnt area by month · 1990 to 2024</div>
+      <div id="vis-radial" class="vega-chart" style="height:280px"></div>
+      <div class="ccap">Most of the burning happens in summer (Dec to Feb). Source: Geoscience Australia HBB, grouped by ignition month.</div>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">B. What lights the match</div>
+      <div class="csub">Cause of fire · 1990 to 2024 (fires with a known cause only)</div>
+      <div id="vis-donut" class="vega-chart" style="height:280px"></div>
+      <div class="ccap">Lightning starts most of the rangeland fires. People start most of the fires near towns and roads. About 94% of records have no cause listed, so they are not shown here. Source: GA HBB v2.</div>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">C. Causes over time</div>
+      <div class="csub">Share of fires by cause each year · 1990 to 2024</div>
+      <div id="vis-stack" class="vega-chart" style="height:280px"></div>
+      <div class="ccap">The lightning share has stayed roughly the same. Human-caused fires have crept up as the southeast keeps growing. Source: GA HBB v2 (known causes only).</div>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">D. Hotter summers, more fires</div>
+      <div class="csub">Summer temperature vs number of fires · 1990 to 2024</div>
+      <div id="vis-scatter" class="vega-chart" style="height:280px"></div>
+      <div class="ccap">Each dot is one fire season. Hotter summers usually bring more fires. Temperature is the BOM anomaly for Dec to Feb against the 1961 to 1990 average.</div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== SMALL MULTIPLES =================== -->
+<section class="wrap band">
+  <div class="sm-grid">
+    <div>
+      <span class="sec-tag">§ 06 · State by state</span>
+      <h3 class="h-28" style="margin:6px 0 14px 0">Six states, six different fires</h3>
+      <p style="font-size:15px;color:#3A3A38;line-height:1.65;max-width:46ch">Each panel shows one state's burnt area by decade. Each panel has its own y-axis so the shape stays readable. WA alone burns more land in a decade than the rest of the country put together. The peak decade is the 2010s in every state below.</p>
+      <p style="font-size:13px;color:#8C8C8C;line-height:1.55;max-width:46ch">Red bar marks the peak decade. Numbers in km², shortened with k (thousands) and M (millions).</p>
+    </div>
+    <div id="vis-multiples" class="vega-chart" style="min-height:200px"></div>
+  </div>
+  <p class="caption" style="margin-top:18px">Each panel uses its own y-axis (state totals differ by orders of magnitude). The 2020s bar only covers up to end of 2024.</p>
+</section>
+
+<!-- =================== BIVARIATE MAP =================== -->
+<section class="wrap band">
+  <div class="biv-grid">
+    <div class="biv-card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+        <div>
+          <span class="sec-tag">§ 07 · Heat and fire</span>
+          <h2 style="font-size:32px;font-weight:700;margin-top:4px">Where heat meets fire</h2>
+        </div>
+        <span class="derived">◆ Derived viz</span>
+      </div>
+
+      <div id="vis-bivariate" class="vega-chart" style="min-height:520px"></div>
+
+      <div class="ann-card" style="left:24px; bottom:30px; width:190px">
+        <div class="ann-title">Western Australia</div>
+        <div class="ann-meta">Top right cell · high × hot</div>
+        <div style="font-size:11px;color:#5a5a55;margin-top:4px">Burns the most often, and summers there are running about 1.6°C hotter than the 1961 to 1990 average.</div>
+      </div>
+    </div>
+
+    <aside class="biv-explain">
+      <h4>How to read this map</h4>
+      <p>This map shows two things at once. The colour says how often a state burns (up the legend) and how much hotter its summers have been getting (across the legend). The darker the state, the worse on both counts.</p>
+      <p>WA, the NT and Queensland share the same dark signature. That is the savanna fire belt: hot, and burning often.</p>
+      <p>The southeast (Victoria, southern NSW, the ACT) sits in the middle of the legend. Fires there are less common, but the summers are hot and most of the population lives there.</p>
+      <div id="biv-legend"></div>
+    </aside>
+  </div>
+</section>
+
+<!-- =================== TOP 10 BAR CHART =================== -->
+<section class="wrap band">
+  <div class="top10-grid">
+    <div class="top10-intro">
+      <span class="sec-tag">§ 08 · Biggest fires</span>
+      <h2 class="h-28" style="margin:6px 0 16px 0">The biggest fires</h2>
+      <p>This is the ten largest single fires in the Geoscience Australia record. The catalogue treats each separate fire footprint as its own entry, so a season like Black Summer (which had many fronts) gets split into a lot of smaller entries instead of one giant one.</p>
+      <p>The list reads like a map of the interior. The savanna and the rangelands run long, hot seasons with few people around, and the biggest single fires come from there. The famous southeast names (Ash Wednesday, Black Saturday) killed more people but burnt less land, so they do not show up here.</p>
+    </div>
+    <div id="vis-top10" class="vega-chart" style="min-height:480px"></div>
+  </div>
+  <p class="caption" style="margin-top:6px">Bar length is burnt area in km². Source: Geoscience Australia HBB v2.</p>
+</section>
+
+<!-- =================== CALENDAR HEATMAP =================== -->
+<section class="wrap band" id="black-summer">
+  <div class="sec-head">
+    <span class="sec-tag">§ 09 · Black summer</span>
+    <h2 class="h-28">Black Summer, day by day</h2>
+    <p class="sub">Number of new fires each day across Australia, 1 July 2019 to 31 March 2020. Every cell is one day. Columns are weeks. Rows are days of the week.</p>
+  </div>
+
+  <div class="cal-card">
+    <div id="vis-calendar" class="vega-chart" style="min-height:240px"></div>
+  </div>
+
+  <p class="caption" style="margin-top:16px;max-width:75ch">By 4 January the season had already burnt over <b style="color:#B23A1A;font-family:Playfair Display">5.5 million hectares</b> in NSW alone. The dark band you can see through late December and January isn't one fire. It's lots of separate fronts going at once, from the Snowy Mountains up to the Mid North Coast, on days over 40°C with mountain wind pouring down the slopes.</p>
+</section>
+
+<!-- =================== CONNECTED SCATTER =================== -->
+<section class="wrap band">
+  <div class="cs-grid">
+    <div style="background:#FFFDF6;border:1px solid #D9D2C2;padding:24px;position:relative">
+      <span class="sec-tag">§ 10 · Rain and fire</span>
+      <h2 class="h-28" style="margin:6px 0 14px 0">When the rain fails</h2>
+      <div id="vis-connected" class="vega-chart" style="min-height:480px"></div>
+    </div>
+
+    <div class="cs-caption">
+      <p style="font-family:Playfair Display;font-style:italic;font-size:20px;line-height:1.45;color:#2B2B2B;margin-bottom:18px">The worst fire years sit on the dry side of the chart.</p>
+      <p>Each dot is one year. Going left to right is rainfall compared to the 1961 to 1990 average: dots on the right are dry years, dots on the left are wet ones. Up the y-axis is the year's burnt area on a log scale, so each gridline is roughly a doubling.</p>
+      <p>Follow the line as a path. It wanders through the wet 1990s and the drying 2000s, then in 2019 it jumps almost straight up. The driest year on BOM's record gave us the biggest fire year on Geoscience Australia's record.</p>
+      <p>The pattern is simple: <b style="color:#B23A1A">when the rain doesn't come through winter and spring, the next summer pays for it.</b></p>
+    </div>
+  </div>
+</section>
+
+<!-- =================== FOOTER =================== -->
+<footer id="sources">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <svg width="40" height="40" viewBox="0 0 32 32" aria-hidden="true">
+        <circle cx="16" cy="16" r="15" fill="none" stroke="#FAF6EF" stroke-width="1"/>
+        <path d="M16 7 C 12 12, 11 15, 13 18 C 11 19, 10.5 21, 12 23 C 13 24.4, 15 25, 16 25 C 17 25, 19 24.4, 20 23 C 21.5 21, 21 19, 19 18 C 21 15, 20 12, 16 7 Z"
+              fill="none" stroke="#B23A1A" stroke-width="1.6" stroke-linejoin="round"/>
+      </svg>
+      <span class="word">EMBER</span>
+    </div>
+
+    <div class="fcols">
+      <div class="fcol">
+        <h5>Data sources</h5>
+        <ul>
+          <li><a href="https://www.bom.gov.au/climate/data/" target="_blank" rel="noopener">BOM Climate Data Online</a><br/><span class="muted">Monthly &amp; daily climate records, 1908 to present</span></li>
+          <li><a href="https://www.ga.gov.au/scientific-topics/national-location-information/historical-bushfire-boundaries" target="_blank" rel="noopener">Geoscience Australia · Historical Bushfire Boundaries</a><br/><span class="muted">v2 release, June 2024</span></li>
+          <li><a href="https://hotspots.dea.ga.gov.au/" target="_blank" rel="noopener">Digital Earth Australia · Hotspots</a><br/><span class="muted">Sentinel-3 + Himawari fire detections</span></li>
+          <li><a href="https://data.gov.au" target="_blank" rel="noopener">data.gov.au · National Bushfire Extents NRT</a><br/><span class="muted">Operational near-real-time extents</span></li>
+        </ul>
+      </div>
+
+      <div class="fcol">
+        <h5>Methodology</h5>
+        <ul>
+          <li>Annual totals pulled straight from GA HBB v2, grouped by ignition year. Overlapping polygons are not dissolved, so cumulative areas are slightly inflated.</li>
+          <li>Numbers before 1990 mix older state agency archives with later satellite data, so the early record is rougher.</li>
+          <li>Maps use an Albers equal-area projection (lat₀ = -18°, lat₁ = -36°) so state areas can be compared fairly.</li>
+        </ul>
+      </div>
+
+      <div class="fcol">
+        <h5>AI acknowledgement</h5>
+        <p style="margin:0;color:#E8E0CD;line-height:1.65">Text editing and code scaffolding helped along by Claude (Anthropic). The data work, the source choices, the claims, and the design decisions are mine.</p>
+        <p style="margin:10px 0 0 0;color:#a8a6a0;font-size:11px">Claude helped with copy-editing, drafting prose from outlines, and scaffolding the SVG and Vega-Lite code. It did <i>not</i> generate or guess any of the data values shown.</p>
+      </div>
+
+      <div class="fcol">
+        <h5>Author</h5>
+        <p style="margin:0;color:#E8E0CD;line-height:1.7"><b style="color:#fff;font-family:'Playfair Display';font-weight:600;font-size:14px">mtra0098</b><br/>
+          Monash University<br/>
+          FIT2179 Data Visualisation<br/>
+          <span class="muted">May 2026 · Semester 1</span></p>
+        <p style="margin:14px 0 0 0"><a href="https://github.com/mtra0098/FIT2179-repo" target="_blank" rel="noopener" style="font-family:JetBrains Mono;font-size:11px;letter-spacing:1.4px;text-transform:uppercase">↗ github / mtra0098 / fit2179</a></p>
+        <span class="cc-badge">CC&nbsp;BY&nbsp;4.0</span>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 · mtra0098 · Made in Melbourne</span>
+      <span>EMBER · MMXXVI · A bushfire data essay</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Small multiples: burnt area per decade per state. Independent y-scales so each state's shape is readable.",
+  "background": null,
+  "data": { "url": "data/state_decade.csv" },
+  "facet": {
+    "field": "state",
+    "type": "nominal",
+    "columns": 6,
+    "sort": ["NSW", "VIC", "QLD", "WA", "SA", "TAS"],
+    "header": {
+      "title": null,
+      "labelFont": "Inter, sans-serif",
+      "labelFontSize": 11,
+      "labelFontWeight": 600,
+      "labelColor": "#2B2B2B",
+      "labelPadding": 10
+    }
+  },
+  "spacing": 14,
+  "resolve": { "scale": { "y": "independent" } },
+  "spec": {
+    "width": 118,
+    "height": 160,
+    "mark": { "type": "bar", "size": 16 },
+    "encoding": {
+      "x": {
+        "field": "decade",
+        "type": "ordinal",
+        "axis": {
+          "title": null,
+          "labelAngle": 0,
+          "labelFontSize": 9,
+          "labelExpr": "\"'\" + (datum.value % 100 < 10 ? '0' + (datum.value % 100) : (datum.value % 100)) + 's'",
+          "labelPadding": 4,
+          "domain": true,
+          "ticks": false,
+          "grid": false
+        }
+      },
+      "y": {
+        "field": "burnt_area_km2",
+        "type": "quantitative",
+        "axis": {
+          "title": null,
+          "tickCount": 3,
+          "labelFontSize": 9,
+          "labelFont": "JetBrains Mono",
+          "labelColor": "#8C8C8C",
+          "labelPadding": 2,
+          "format": ",.0s",
+          "domain": false,
+          "ticks": false,
+          "grid": true,
+          "gridColor": "#E6E0D0",
+          "gridWidth": 0.5
+        }
+      },
+      "color": {
+        "condition": { "test": "datum.is_peak === true || datum.is_peak === 'True'", "value": "#B23A1A" },
+        "value": "#C9C2B0"
+      },
+      "tooltip": [
+        { "field": "state", "type": "nominal" },
+        { "field": "decade", "type": "ordinal", "title": "Decade" },
+        { "field": "burnt_area_km2", "type": "quantitative", "format": ",", "title": "Burnt km²" }
+      ]
+    }
+  }
+}

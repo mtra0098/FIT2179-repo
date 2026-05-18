@@ -1,0 +1,36 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Choropleth: cumulative burnt area by Australian state, 2000-2024.",
+  "width": "container",
+  "height": 520,
+  "background": null,
+  "projection": { "type": "albers", "rotate": [-132, 0, 0], "center": [0, -27], "parallels": [-18, -36] },
+  "data": {
+    "url": "data/au_states.json",
+    "format": { "type": "json", "property": "features" }
+  },
+  "transform": [
+    {
+      "lookup": "properties.STATE_NAME",
+      "from": {
+        "data": { "url": "data/fires_state.csv" },
+        "key": "state",
+        "fields": ["burnt_area_km2", "n_fires"]
+      }
+    }
+  ],
+  "mark": { "type": "geoshape", "stroke": "#FAF6EF", "strokeWidth": 1.2 },
+  "encoding": {
+    "color": {
+      "field": "burnt_area_km2",
+      "type": "quantitative",
+      "scale": { "scheme": "oranges", "domainMin": 0 },
+      "legend": { "title": "Burnt area (km²)", "orient": "bottom-left", "direction": "horizontal", "format": ",.0f" }
+    },
+    "tooltip": [
+      { "field": "properties.STATE_NAME", "type": "nominal", "title": "State" },
+      { "field": "burnt_area_km2", "type": "quantitative", "title": "Burnt area (km²)", "format": "," },
+      { "field": "n_fires", "type": "quantitative", "title": "Recorded fires", "format": "," }
+    ]
+  }
+}
