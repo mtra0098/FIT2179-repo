@@ -50,11 +50,9 @@
         <span class="dot"></span>
         <span class="mono">2026-05-29</span>
         <span class="dot"></span>
-        <span>8 min read</span>
-        <span class="dot"></span>
         <span class="eyebrow" style="margin:0">FIT2179 · Monash</span>
       </div>
-      <p class="hook">Every summer the country burns somewhere. This is what the public data shows about where, when, and why.</p>
+      <p class="hook">Every summer, somewhere in Australia, the land burns. Homes turn to ash overnight, towns evacuate by the thousand, and forests carry scars that take decades to grow back. The question is no longer <em>if</em> the next fire season will come. It is <em>how much worse</em>. And the seasons that turned out worst all share one thing in common.</p>
     </div>
     <div class="hero-spark" aria-hidden="true">
       <div class="smoke"></div>
@@ -97,8 +95,8 @@
 <section class="wrap intro">
   <div class="intro-text">
     <p>Bushfire is older than Australia itself. The eucalypts need it. A lot of native seeds will not open without it. People have been managing it on this continent for sixty thousand years.</p>
-    <p>Between 1950 and 2024 the agencies recorded enough bushfire to cover an area bigger than France. Most of it was up north and out west, in the savannas of the Top End and the spinifex of the Pilbara, where fire is just part of the year. The southeast is different. Fires there are rarer, but they are hotter and faster, and they tend to hit where most of us live.</p>
-    <p>The charts below come from three places: the Bureau of Meteorology, Geoscience Australia, and Digital Earth Australia. Scroll through and have a look. The thing to keep in mind is whether the fire season we used to plan around is still the fire season we are getting.</p>
+    <p>Between 1950 and 2024 the agencies recorded enough bushfire to cover an area bigger than France. The continent burnt <b style="color:#B23A1A">two and a half times more land after 2000</b> than across the entire half-century before it. Most of it was up north and out west, where fire is part of the year. The southeast is different. Fires there are rarer, but they are hotter and faster, and they tend to hit where most of us live.</p>
+    <p>The charts below trace seventy fire seasons across maps, calendars and climate records. Geography, ignition and heat each play a role. The piece that keeps turning up in the worst seasons, though, is rainfall: when it disappears, the door opens to the kind of summer nobody plans for.</p>
   </div>
   <div class="kpis">
     <div class="kpi">
@@ -137,7 +135,7 @@
   <div class="sec-head">
     <span class="sec-tag">§ 03 · Geography of fire</span>
     <h2>Where Australia burns</h2>
-    <p class="sub">Cumulative bushfire footprint by state and territory since 2000, in square kilometres. Rangeland fires in the north and west dominate the total. The southeast carries the heavier human cost.</p>
+    <p class="sub"><b>Western Australia alone holds 74% of all burnt area on record. Add Queensland and that number reaches 87%.</b> Rangeland fires in the north and west dominate the totals. The southeast carries the heavier human cost.</p>
   </div>
 
   <div class="map-grid">
@@ -166,7 +164,7 @@
       <div class="rsub">By cumulative km² since 2000</div>
       <div id="state-rank-list"></div>
       <div style="margin-top:18px;font-size:11px;color:#8C8C8C;line-height:1.55">
-        WA and the NT together cover <b style="color:#B23A1A;font-family:Playfair Display">59%</b> of all area burnt. Almost all of it is savanna and spinifex country, hardly anyone lives there.
+        WA alone accounts for <b style="color:#B23A1A;font-family:Playfair Display">74%</b> of all burnt area on record. Almost all of it is savanna and spinifex country where hardly anyone lives.
       </div>
     </aside>
   </div>
@@ -176,9 +174,10 @@
 <!-- =================== TIME SERIES =================== -->
 <section class="wrap band" id="timeline">
   <div class="sec-head">
+    <p class="sub" style="font-style:italic;margin-bottom:14px;color:#8C8C8C">WA holds the biggest scar by area. But that scar grew unevenly across seventy years. Some seasons stand out from the rest.</p>
     <span class="sec-tag">§ 04 · When</span>
     <h2 class="h-28">Seventy fire seasons</h2>
-    <p class="sub">Area burnt each year, 1950 to 2024. Three seasons stick out: Ash Wednesday, Black Saturday, and Black Summer.</p>
+    <p class="sub"><b>2012 alone burnt more than the entire 1950s, 60s and 70s combined.</b> The post-2000 record is dominated by a handful of huge seasons: 2012, 2011, 2000, and 2019. Each one followed a long dry stretch.</p>
   </div>
 
   <div class="ts-card">
@@ -190,6 +189,7 @@
 
 <!-- =================== 2x2 GRID =================== -->
 <section class="wrap band" id="causes">
+  <p class="sub" style="font-style:italic;margin-bottom:14px;color:#8C8C8C;max-width:62ch">The trend goes up. The next question is when in the year does fire concentrate, and what lights it.</p>
   <div style="display:flex;align-items:end;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:24px">
     <div class="sec-head" style="margin-bottom:0">
       <span class="sec-tag">§ 05 · Why</span>
@@ -199,8 +199,7 @@
     <div class="grid-legend">
       <span class="swatch"><i style="background:#B23A1A"></i> Lightning</span>
       <span class="swatch"><i style="background:#2B2B2B"></i> Human</span>
-      <span class="swatch"><i style="background:#4A7A4A"></i> Prescribed</span>
-      <span class="swatch"><i style="background:#B4B0A6"></i> Unknown</span>
+      <span class="swatch"><i style="background:#B4B0A6"></i> Unknown (excluded)</span>
     </div>
   </div>
 
@@ -209,39 +208,40 @@
       <div class="ctitle">A. The fire calendar</div>
       <div class="csub">Burnt area by month · 1990 to 2024</div>
       <div id="vis-radial" class="vega-chart" style="height:280px"></div>
-      <div class="ccap">Most of the burning happens in summer (Dec to Feb). Source: Geoscience Australia HBB, grouped by ignition month.</div>
+      <div class="ccap"><b>December alone accounts for more burnt land than the next two months combined.</b> The fire calendar is sharply skewed: the last weeks of the year hold the highest single-month total in the record. Source: Geoscience Australia HBB, grouped by ignition month.</div>
     </div>
 
     <div class="card">
       <div class="ctitle">B. What lights the match</div>
       <div class="csub">Cause of fire · 1990 to 2024 (fires with a known cause only)</div>
       <div id="vis-donut" class="vega-chart" style="height:280px"></div>
-      <div class="ccap">Lightning starts most of the rangeland fires. People start most of the fires near towns and roads. About 94% of records have no cause listed, so they are not shown here. Source: GA HBB v2.</div>
+      <div class="ccap"><b>Of fires where a cause was recorded, humans lit nearly three out of four.</b> Lightning accounts for the remaining quarter. The catch is that <b>94% of fires in the catalogue have no cause listed</b>, so this chart only speaks for the 6% that do. The rangeland fires up north tend to fall in that unknown majority. Source: GA HBB v2.</div>
     </div>
 
     <div class="card">
       <div class="ctitle">C. Causes over time</div>
       <div class="csub">Share of fires by cause each year · 1990 to 2024</div>
       <div id="vis-stack" class="vega-chart" style="height:280px"></div>
-      <div class="ccap">The lightning share has stayed roughly the same. Human-caused fires have crept up as the southeast keeps growing. Source: GA HBB v2 (known causes only).</div>
+      <div class="ccap"><b>Human ignitions have climbed steadily since the late 1990s.</b> The lightning share has stayed flat. As population spread further into the bush-urban edge, more fires got lit. Source: GA HBB v2 (known causes only).</div>
     </div>
 
     <div class="card">
       <div class="ctitle">D. Hotter summers, more fires</div>
       <div class="csub">Summer temperature vs number of fires · 1990 to 2024</div>
       <div id="vis-scatter" class="vega-chart" style="height:280px"></div>
-      <div class="ccap">Each dot is one fire season. Hotter summers usually bring more fires. Temperature is the BOM anomaly for Dec to Feb against the 1961 to 1990 average.</div>
+      <div class="ccap"><b>Hotter summers bring more fires, but not always bigger ones.</b> Fire counts correlate with temperature; total area burnt does not. Heat alone does not finish the picture. The missing piece is whether the land arrived at summer dry. Temperature is the BOM anomaly for Dec to Feb against the 1961 to 1990 average.</div>
     </div>
   </div>
 </section>
 
 <!-- =================== SMALL MULTIPLES =================== -->
 <section class="wrap band">
+  <p class="sub" style="font-style:italic;margin-bottom:14px;color:#8C8C8C;max-width:62ch">National numbers hide regional stories. Does the rising trend hold state by state, or does one state drag the rest along?</p>
   <div class="sm-grid">
     <div>
       <span class="sec-tag">§ 06 · State by state</span>
       <h3 class="h-28" style="margin:6px 0 14px 0">Six states, six different fires</h3>
-      <p style="font-size:15px;color:#3A3A38;line-height:1.65;max-width:46ch">Each panel shows one state's burnt area by decade. Each panel has its own y-axis so the shape stays readable. WA alone burns more land in a decade than the rest of the country put together. The peak decade is the 2010s in every state below.</p>
+      <p style="font-size:15px;color:#3A3A38;line-height:1.65;max-width:46ch"><b>Five of the six states peaked in the 2010s.</b> Victoria is the only odd one out: its big decade was the 2000s, driven by the 2003 Alpine fires and Black Saturday. Each panel has its own y-axis so the shape stays readable. WA still dominates the totals, but the upward slope shows up almost everywhere.</p>
       <p style="font-size:13px;color:#8C8C8C;line-height:1.55;max-width:46ch">Red bar marks the peak decade. Numbers in km², shortened with k (thousands) and M (millions).</p>
     </div>
     <div id="vis-multiples" class="vega-chart" style="min-height:200px"></div>
@@ -251,6 +251,7 @@
 
 <!-- =================== BIVARIATE MAP =================== -->
 <section class="wrap band">
+  <p class="sub" style="font-style:italic;margin-bottom:14px;color:#8C8C8C;max-width:62ch">Every state moves on its own curve. The next view combines two risks, fire frequency and summer heat, into one map.</p>
   <div class="biv-grid">
     <div class="biv-card">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
@@ -282,12 +283,13 @@
 
 <!-- =================== TOP 10 BAR CHART =================== -->
 <section class="wrap band">
+  <p class="sub" style="font-style:italic;margin-bottom:14px;color:#8C8C8C;max-width:62ch">The map shows where compound risk lives. The next chart shows what the worst single fires look like at full scale.</p>
   <div class="top10-grid">
     <div class="top10-intro">
       <span class="sec-tag">§ 08 · Biggest fires</span>
       <h2 class="h-28" style="margin:6px 0 16px 0">The biggest fires</h2>
-      <p>This is the ten largest single fires in the Geoscience Australia record. The catalogue treats each separate fire footprint as its own entry, so a season like Black Summer (which had many fronts) gets split into a lot of smaller entries instead of one giant one.</p>
-      <p>The list reads like a map of the interior. The savanna and the rangelands run long, hot seasons with few people around, and the biggest single fires come from there. The famous southeast names (Ash Wednesday, Black Saturday) killed more people but burnt less land, so they do not show up here.</p>
+      <p><b>The biggest single fire on record (Neale Junction, WA, 2018) burnt 27,696 km², larger than the entire ACT plus Greater Sydney combined.</b> These are the ten largest individual fires in the Geoscience Australia catalogue. The catalogue treats each separate footprint as its own entry, so a season like Black Summer (which had many fronts) gets split into smaller entries instead of one giant one.</p>
+      <p>The list reads like a map of the interior. The savanna and rangelands run long, hot seasons with almost no one around to stop them, and the biggest single fires come from there. The famous southeast names (Ash Wednesday, Black Saturday) killed more people but burnt less land, so they do not show up here.</p>
     </div>
     <div id="vis-top10" class="vega-chart" style="min-height:480px"></div>
   </div>
@@ -296,21 +298,58 @@
 
 <!-- =================== CALENDAR HEATMAP =================== -->
 <section class="wrap band" id="black-summer">
+  <p class="sub" style="font-style:italic;margin-bottom:14px;color:#8C8C8C;max-width:62ch">Big fires cluster in time as well as space. Zoom in on the worst nine months in Australian fire history.</p>
   <div class="sec-head">
     <span class="sec-tag">§ 09 · Black summer</span>
     <h2 class="h-28">Black Summer, day by day</h2>
-    <p class="sub">Number of new fires each day across Australia, 1 July 2019 to 31 March 2020. Every cell is one day. Columns are weeks. Rows are days of the week.</p>
+    <p class="sub">Number of new fires each day across Australia, 1 July 2019 to 31 March 2020. Every cell is one day. The dark band that runs through December and January is not one fire. It is dozens, burning together.</p>
   </div>
 
-  <div class="cal-card">
+  <div class="cal-card" style="position:relative">
     <div id="vis-calendar" class="vega-chart" style="min-height:240px"></div>
+
+    <div class="ann-card" style="left:34%; top:18px; width:170px">
+      <div class="ann-title">30-31 Dec 2019</div>
+      <div class="ann-meta">Mallacoota</div>
+      <div style="font-size:11px;color:#5a5a55;margin-top:4px">4,000 people sheltered on the beach. Sky turned black at 9am.</div>
+    </div>
+    <div class="ann-card" style="left:42%; bottom:18px; width:170px">
+      <div class="ann-title">4 Jan 2020</div>
+      <div class="ann-meta">Worst single day</div>
+      <div style="font-size:11px;color:#5a5a55;margin-top:4px">Canberra declared a state of emergency. Temperatures over 44°C.</div>
+    </div>
+    <div class="ann-card" style="right:18%; top:18px; width:170px">
+      <div class="ann-title">10 Feb 2020</div>
+      <div class="ann-meta">Rain breaks the season</div>
+      <div style="font-size:11px;color:#5a5a55;margin-top:4px">Major rainfall extinguishes most NSW fronts after seven months.</div>
+    </div>
   </div>
 
-  <p class="caption" style="margin-top:16px;max-width:75ch">By 4 January the season had already burnt over <b style="color:#B23A1A;font-family:Playfair Display">5.5 million hectares</b> in NSW alone. The dark band you can see through late December and January isn't one fire. It's lots of separate fronts going at once, from the Snowy Mountains up to the Mid North Coast, on days over 40°C with mountain wind pouring down the slopes.</p>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:24px;padding:18px 0;border-top:1px solid #D9D2C2;border-bottom:1px solid #D9D2C2">
+    <div>
+      <div class="label" style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#8C8C8C;font-family:'JetBrains Mono';margin-bottom:4px">Hectares burnt</div>
+      <div style="font-family:'Playfair Display';font-size:28px;color:#B23A1A;font-weight:600;line-height:1">24.3<small style="font-size:14px;font-weight:500;margin-left:4px">million</small></div>
+    </div>
+    <div>
+      <div class="label" style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#8C8C8C;font-family:'JetBrains Mono';margin-bottom:4px">Lives lost</div>
+      <div style="font-family:'Playfair Display';font-size:28px;color:#B23A1A;font-weight:600;line-height:1">33<small style="font-size:14px;font-weight:500;margin-left:4px">+417 smoke</small></div>
+    </div>
+    <div>
+      <div class="label" style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#8C8C8C;font-family:'JetBrains Mono';margin-bottom:4px">Homes destroyed</div>
+      <div style="font-family:'Playfair Display';font-size:28px;color:#B23A1A;font-weight:600;line-height:1">3,094</div>
+    </div>
+    <div>
+      <div class="label" style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#8C8C8C;font-family:'JetBrains Mono';margin-bottom:4px">Animals affected</div>
+      <div style="font-family:'Playfair Display';font-size:28px;color:#B23A1A;font-weight:600;line-height:1">3<small style="font-size:14px;font-weight:500;margin-left:4px">billion</small></div>
+    </div>
+  </div>
+
+  <p class="caption" style="margin-top:18px;max-width:75ch">The smoke from these fires <b>circled the entire planet</b>. It reached the glaciers of New Zealand by 1 January, crossed the South Pacific to Chile and Argentina, and was detected by NASA satellites in the stratosphere weeks later. The 33 people who died in the flames were joined by an estimated <b style="color:#B23A1A">417 more from smoke inhalation</b> across the eastern states. By the time the rains finally came on 10 February, an area the size of England had burnt. Sources: Royal Commission into National Natural Disaster Arrangements (2020); Borchers Arriagada et al., MJA (2020); WWF-Australia (2020).</p>
 </section>
 
 <!-- =================== CONNECTED SCATTER =================== -->
 <section class="wrap band">
+  <p class="sub" style="font-style:italic;margin-bottom:14px;color:#8C8C8C;max-width:62ch">Black Summer did not arrive out of nowhere. The drought that fed it shows up in the climate record years earlier. The last chart in this essay pulls climate and fire onto the same page.</p>
   <div class="cs-grid">
     <div style="background:#FFFDF6;border:1px solid #D9D2C2;padding:24px;position:relative">
       <span class="sec-tag">§ 10 · Rain and fire</span>
@@ -319,10 +358,11 @@
     </div>
 
     <div class="cs-caption">
-      <p style="font-family:Playfair Display;font-style:italic;font-size:20px;line-height:1.45;color:#2B2B2B;margin-bottom:18px">The worst fire years sit on the dry side of the chart.</p>
-      <p>Each dot is one year. Going left to right is rainfall compared to the 1961 to 1990 average: dots on the right are dry years, dots on the left are wet ones. Up the y-axis is the year's burnt area on a log scale, so each gridline is roughly a doubling.</p>
-      <p>Follow the line as a path. It wanders through the wet 1990s and the drying 2000s, then in 2019 it jumps almost straight up. The driest year on BOM's record gave us the biggest fire year on Geoscience Australia's record.</p>
-      <p>The pattern is simple: <b style="color:#B23A1A">when the rain doesn't come through winter and spring, the next summer pays for it.</b></p>
+      <p style="font-family:Playfair Display;font-style:italic;font-size:22px;line-height:1.4;color:#B23A1A;margin-bottom:18px">Rain does not write the whole story. But it writes the worst chapters.</p>
+      <p>Each dot is one year between 1990 and 2023. The horizontal axis is rainfall against the 1961 to 1990 average: dots on the right are <b>dry years</b>, dots on the left are wet ones. The vertical axis is the season's burnt area on a log scale.</p>
+      <p>The relationship is messier than you might expect. Plenty of wet years also burnt a lot, mostly in the savanna country up north where grass grows fast after rain and then dries out into fuel. But the dry side of the chart is where the disaster years live. <b style="color:#B23A1A">2019 was the driest year on record (190 mm below average), and it became Black Summer.</b> 2002, the second driest year, sat above 200,000 km².</p>
+      <p>So rainfall on its own does not predict total burnt area. What it does predict is whether a season will tip from manageable into catastrophic. Hot weather, ignition sources and bad luck all play their parts. Rain is the variable that decides whether those parts add up to a typical season or a once-in-a-generation one.</p>
+      <p style="font-family:Playfair Display;font-style:italic;font-size:18px;color:#2B2B2B;border-top:1px solid #D9D2C2;padding-top:14px;margin-top:18px">When the rain does not come, the worst-case scenarios get unlocked. The fire seasons we used to plan around are not the fire seasons we are getting.</p>
     </div>
   </div>
 </section>
@@ -343,10 +383,10 @@
       <div class="fcol">
         <h5>Data sources</h5>
         <ul>
-          <li><a href="https://www.bom.gov.au/climate/data/" target="_blank" rel="noopener">BOM Climate Data Online</a><br/><span class="muted">Monthly &amp; daily climate records, 1908 to present</span></li>
+          <li><a href="https://www.bom.gov.au/climate/data/" target="_blank" rel="noopener">BOM Climate Data Online</a><br/><span class="muted">Monthly rainfall &amp; temperature records, 1910 to present</span></li>
           <li><a href="https://www.ga.gov.au/scientific-topics/national-location-information/historical-bushfire-boundaries" target="_blank" rel="noopener">Geoscience Australia · Historical Bushfire Boundaries</a><br/><span class="muted">v2 release, June 2024</span></li>
-          <li><a href="https://hotspots.dea.ga.gov.au/" target="_blank" rel="noopener">Digital Earth Australia · Hotspots</a><br/><span class="muted">Sentinel-3 + Himawari fire detections</span></li>
-          <li><a href="https://data.gov.au" target="_blank" rel="noopener">data.gov.au · National Bushfire Extents NRT</a><br/><span class="muted">Operational near-real-time extents</span></li>
+          <li><a href="https://naturaldisaster.royalcommission.gov.au/" target="_blank" rel="noopener">Royal Commission into National Natural Disaster Arrangements</a><br/><span class="muted">Final Report, October 2020 (Black Summer figures)</span></li>
+          <li><a href="https://www.mja.com.au/journal/2020/213/6/unprecedented-smoke-related-health-burden-associated-2019-20-bushfires" target="_blank" rel="noopener">Borchers Arriagada et al. · Medical Journal of Australia (2020)</a><br/><span class="muted">Smoke-related mortality estimate</span></li>
         </ul>
       </div>
 
